@@ -2,7 +2,7 @@
 
 function check_dependencies {
     MISSING_DEPS=0
-    for dep in node zenity chrontab; do
+    for dep in at zenity; do
         if ! command -v $dep >/dev/null 2>&1; then
             echo "Error: $dep is not installed"
             MISSING_DEPS=1
@@ -20,6 +20,8 @@ function get_running_deamons {
 function schedule_closing {
     echo "kill  $1" | at now + $2
 }
+
+
 
 function main {
     get_running_deamons > tmp.txt

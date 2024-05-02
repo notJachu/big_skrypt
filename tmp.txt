@@ -26,8 +26,6 @@
 449 python3
 1851 snapfuse
 1868 snapd
-6323 systemd-udevd
-6324 systemd-udevd
-6325 systemd-udevd
-6326 systemd-udevd
-6327 systemd-udevd
+11633 atd
+11647 packagekitd
+11651 polkitd
