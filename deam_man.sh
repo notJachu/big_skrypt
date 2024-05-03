@@ -14,14 +14,16 @@ function check_dependencies {
 }
 
 function get_running_deamons {
-    ps -eo 'tty,pid,comm' | grep ^? | awk '{print $2, $3}'
+    ps -eo 'tty,pid,comm,pcpu,pmem' | grep ^? | awk '{print $2, $3, $4, $5}'
 }
 
 function schedule_closing {
     echo "kill  $1" | at now + $2
 }
 
-
+function display_running {
+    get_running_deamons | zenity --list --column=PID --column=Name --column=CPU --column=Memory --checklist --separator=" " --text="Select deamons to close" --title="Deamons" --width=400 --height=300
+}
 
 function main {
     get_running_deamons > tmp.txt

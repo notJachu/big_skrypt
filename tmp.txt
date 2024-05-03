@@ -1,31 +1,34 @@
-1 systemd
-2 init-systemd(Ub
-8 init
-37 systemd-journal
-60 systemd-udevd
-72 snapfuse
-73 snapfuse
-76 snapfuse
-80 snapfuse
-88 snapfuse
-92 snapfuse
-93 snapfuse
-100 systemd-resolve
-112 cron
-113 dbus-daemon
-146 networkd-dispat
-148 rsyslogd
-158 systemd-logind
-215 subiquity-serve
-233 unattended-upgr
-358 python3.10
-363 SessionLeader
-364 Relay(365)
-423 systemd
-425 (sd-pam)
-449 python3
-1851 snapfuse
-1868 snapd
-11633 atd
-11647 packagekitd
-11651 polkitd
+1 systemd 0.8 0.0
+2 init-systemd(Ub 0.0 0.0
+8 init 0.0 0.0
+37 systemd-journal 0.0 0.0
+59 systemd-udevd 0.0 0.0
+72 snapfuse 0.0 0.0
+73 snapfuse 0.0 0.0
+75 snapfuse 0.4 0.0
+80 snapfuse 0.0 0.0
+85 snapfuse 0.0 0.0
+86 snapfuse 1.6 0.0
+91 snapfuse 0.0 0.0
+93 snapfuse 0.7 0.0
+100 systemd-resolve 0.1 0.0
+144 cron 0.0 0.0
+145 dbus-daemon 0.0 0.0
+148 networkd-dispat 0.0 0.1
+149 rsyslogd 0.0 0.0
+150 snapd 0.3 0.2
+159 systemd-logind 0.0 0.0
+173 atd 0.0 0.0
+219 subiquity-serve 0.0 0.0
+241 unattended-upgr 0.0 0.1
+368 python3.10 1.9 0.4
+388 SessionLeader 0.0 0.0
+389 Relay(390) 0.0 0.0
+446 systemd 0.0 0.0
+449 (sd-pam) 0.0 0.0
+472 python3 1.0 0.2
+1283 systemd-udevd 0.5 0.0
+1284 systemd-udevd 0.0 0.0
+1286 systemd-udevd 0.0 0.0
+1287 systemd-udevd 0.0 0.0
+1288 systemd-udevd 0.5 0.0
