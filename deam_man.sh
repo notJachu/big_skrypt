@@ -41,7 +41,13 @@ function display_running {
 
 
 function schedule_closing {
-    echo "kill  $1" | at now + $2
+    TIME=`zenity --entry --title "Closing time" --text "Enter time in minutes"`
+    echo "kill  $1" | at now + $TIME minutes
+}
+
+function schedule_launch {
+    TIME=`zenity --entry --title "Launch time" --text "Enter time in minutes"`
+    echo "service $1 start" | at now + $TIME minutes
 }
 
 function close_deamons {
@@ -60,14 +66,18 @@ function close_deamons {
     if [ -n "$res" ]; then
         for pid in $res; do
             echo $pid
-            schedule_closing $pid "1 minute"
+            schedule_closing $pid
         done
     fi
 
 }
 
 function list_avaliable {
-    ls /etc/init.d/ | grep -v README | zenity --list --column=Name --text="Select deamon to start" --title="Deamons" --width=400 --height=300
+    res=`ls /etc/init.d/ | grep -v README | zenity --list --column=Name --text="Select deamon to start" --title="Deamons" --width=400 --height=300`
+    if [ -n "$res" ]; then
+        schedule_launch $res
+    fi
+
 }
 
 function draw_start_menu {
