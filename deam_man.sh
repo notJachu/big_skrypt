@@ -22,23 +22,20 @@ function display_running {
     get_running_deamons > "$tmp_file"
     deamons_array=()
     while IFS= read -r line; do
-        deamons_array+=("no $line") # adding "no" fixes wierd zenity checkbox that must steal one column from data
+        deamons_array+=("$line")
     done < "$tmp_file"
     #printf "%s\n" "${deamons_array[@]}"
     # res=$(zenity --list --checklist --column=PID --column=Name --column=CPU --column=Memory \
     # --text="Running deamons" --title="Deamons" --width=400 --height=300 \
     # --separator=" " ${deamons_array[@]})
 
-    res=$(zenity --list --checklist --column=Selected --column=PID --column=Name --column=CPU --column=Memory\
+    res=$(zenity --list --column=PID --column=Name --column=CPU --column=Memory\
     --text="Running deamons" --title="Deamons" --width=400 --height=300 \
     --separator=" " ${deamons_array[@]})
     rm "$tmp_file" # Cleanup temporary file
 
     if [ -n "$res" ]; then
-        for pid in $res; do
-            echo $pid
-            #get_process_details $pid
-        done
+        get_process_details $res
     fi
 }
 
@@ -48,12 +45,6 @@ function schedule_closing {
 }
 
 function close_deamons {
-    # while read line; do
-    #     echo $line | awk '{print $1}'
-    #     #pid=$(echo $line | awk '{print $1}')
-    #     #echo $pid
-    #     schedule_closing $pid "1 minute"
-    # done
     local tmp_file="/tmp/running_daemons.txt"
     get_running_deamons > "$tmp_file"
     deamons_array=()
@@ -82,7 +73,8 @@ function list_avaliable {
 function draw_start_menu {
     zenity --list --column=Action --column=Description --text="Select action" --title="Deamons" --width=400 --height=300 \
         "Display" "Display running deamons" \
-        "Close all" "Close all running deamons in 1 minute (may crash system)"
+        "Close all" "Close all running deamons in 1 minute (may crash system)" \
+        "List avaliable" "List avaliable deamons in the /etc/init.d/ directory" \
 
 }
 
@@ -99,7 +91,7 @@ function main {
     #display_running
     #get_process_details 37
 
-    list_avaliable
+    #list_avaliable
 
     while [ 1 -eq 1 ]; do
         res=`draw_start_menu`
@@ -107,10 +99,15 @@ function main {
             "Display")
                 display_running < tmp.txt
                 ;;
-            "Close")
-                close_deamons < tmp.txt
+            "Close all")
+                close_deamons
                 ;;
-            *)
+            "List avaliable")
+                list_avaliable
+                ;;
+            *)  
+                echo "Exiting"
+                echo $res
                 exit 0
                 break
                 ;;
