@@ -14,3 +14,5 @@ This script allows user to launch, close and monitor deamon processes with zenit
 ## CLI params
 - `--help` how to use the script
 - `-v` versions of the script
+
+## Usage
