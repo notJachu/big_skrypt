@@ -1,0 +1,41 @@
+.TH DAEMON_MANAGER 1 "June 2024" "1.0.0" "Daemon Manager Manual"
+.SH NAME
+Daemon Manager \- a script to launch, close, and monitor daemon processes with a Zenity-based UI
+.SH SYNOPSIS
+.B daemon_manager
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+.B Daemon Manager
+is a script that allows users to launch, close, and monitor daemon processes with a Zenity-based UI.
+.SH FUNCTIONS
+The script provides the following functions:
+.TP
+.B Launch and close daemons from dialogue
+Allows the user to launch or close daemons through a Zenity-based dialog interface.
+.TP
+.B List daemons available
+Lists all daemons available in the system.
+.TP
+.B Get status of running daemons
+Provides the status of currently running daemons.
+.TP
+.B Scheduled launching and closing of daemons
+Allows the user to schedule the launching and closing of daemons.
+.SH CLI PARAMETERS
+.TP
+.B \-\-help
+Displays information on how to use the script.
+.TP
+.B \-v
+Shows the version of the script.
+.SH USAGE
+.P
+The following sections describe how to use the script for various tasks.
+.SS Closing Daemons
+To close daemons, go to the tab named "Close daemons" where you can select daemons to be closed.
+.SS Scheduling Launching
+To schedule launching, go to the tab named "List available" to see daemons listed in the /etc/init.d/ directory. Select a daemon and enter the time in minutes for when the daemon should be launched.
+.SS Listing Daemons
+To list daemons, go to the "Display" tab where you will see a list of all currently running daemons. To get more information about a specific daemon, select it and a new window with its details will open.
+.SH AUTHOR
+Jan Stąsiek - 197741
